@@ -11,6 +11,10 @@ export interface IUserToken {
   role: string,
 }
 
+export interface IToken {
+  data: IUserToken,
+}
+
 export interface ILogin {
   email: string,
   password: string,
