@@ -1,5 +1,5 @@
 import CustomError from '../helpers/CustomError';
-import { ILogin } from '../interfaces';
+import { ILogin, IToken } from '../interfaces';
 import Bcrypt from '../auth/bcrypt';
 import JWT from '../auth/jwt';
 import Model from '../database/models/user';
@@ -26,5 +26,11 @@ export default class UserService {
       throw new CustomError(401, 'Incorrect email or password');
     }
     return this.jwt.generateToken({ role, username, email });
+  }
+
+  async validate(token: string) {
+    const validateToken = this.jwt.validateToken(token);
+    const { data: { role } } = validateToken as IToken;
+    return { role };
   }
 }
