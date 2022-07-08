@@ -7,5 +7,6 @@ const controller = new UserController();
 const validation = new Validations();
 
 loginRoutes.post('/', validation.validateLogin, controller.login);
+loginRoutes.get('/validate', controller.validate);
 
 export default loginRoutes;
