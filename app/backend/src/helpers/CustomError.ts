@@ -1,5 +1,5 @@
 export default class CustomError extends Error {
-  private status: number;
+  public status: number;
   constructor(status: number, message: string) {
     super(message);
     this.status = status;
