@@ -2,7 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import UserService from '../services/userService';
 
 export default class UserController {
-  private service = new UserService();
+  private service;
+  constructor(service: UserService) {
+    this.service = service;
+    this.login = this.login.bind(this);
+    this.validate = this.validate.bind(this);
+  }
 
   async login(req: Request, res: Response, next: NextFunction) {
     try {

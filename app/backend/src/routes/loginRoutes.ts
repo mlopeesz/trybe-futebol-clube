@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import Validations from '../middlewares/Validations';
 import UserController from '../controllers/UserController';
+import UserService from '../services/userService';
 
 const loginRoutes = Router();
-const controller = new UserController();
+const service = new UserService();
+const controller = new UserController(service);
 const validation = new Validations();
 
 loginRoutes.post('/', validation.validateLogin, controller.login);
