@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import Validations from '../middlewares/Validations';
 import UserController from '../controllers/UserController';
-import UserService from '../services/userService';
+import UserService from '../services/UserService';
 
 const loginRoutes = Router();
 const service = new UserService();
