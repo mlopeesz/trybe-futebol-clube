@@ -21,16 +21,16 @@ export interface ILogin {
 }
 
 export interface IMatch {
-  id: number,
+  id?: number,
   homeTeam: number,
   homeTeamGoals: number,
   awayTeam: number,
   awayTeamGoals: number,
-  inProgress: boolean,
-  teamHome: {
+  inProgress?: boolean,
+  teamHome?: {
     teamName: string
   },
-  teamAway: {
+  teamAway?: {
     teamName: string
   }
 }
@@ -45,4 +45,21 @@ export interface IMatchData {
 export interface IGoals {
   homeTeamGoals: number,
   awayTeamGoals: number,
+}
+
+export interface ILeaderboard {
+  name?: string;
+  totalPoints: number;
+  totalDraws: number;
+  totalVictories: number;
+  totalLosses: number;
+  goalsFavor: number;
+  totalGames: number;
+  goalsBalance: number;
+  goalsOwn: number;
+  efficiency: number;
+}
+export interface ITeam {
+  id: number;
+  teamName: string;
 }
