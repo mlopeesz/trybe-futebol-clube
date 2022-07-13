@@ -1,7 +1,7 @@
 import { Identifier } from 'sequelize/types';
 import team from '../database/models/team';
 import Model from '../database/models/match';
-import { IMatch } from '../interfaces';
+import { IGoals, IMatch } from '../interfaces';
 import CustomError from '../helpers/CustomError';
 
 export default class MatchService {
@@ -39,5 +39,13 @@ export default class MatchService {
   async finishMatch(id: Identifier | undefined) {
     const finishUpdate = this.model.update({ inProgress: false }, { where: { id } });
     return finishUpdate;
+  }
+
+  async updateMatch(id: number, goals: IGoals) {
+    const inProgress = await this.model.findOne({ where: { id, inProgress: true } });
+    if (!inProgress) {
+      throw new CustomError(400, 'This match is not in progress.');
+    }
+    await this.model.update(goals, { where: { id } });
   }
 }

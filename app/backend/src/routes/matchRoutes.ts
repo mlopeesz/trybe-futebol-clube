@@ -11,5 +11,6 @@ const validation = new Validations();
 route.get('/', controller.getAll);
 route.post('/', validation.validateToken, controller.create);
 route.patch('/:id/finish', controller.finishMatch);
+route.patch('/:id', controller.updateMatch);
 
 export default route;

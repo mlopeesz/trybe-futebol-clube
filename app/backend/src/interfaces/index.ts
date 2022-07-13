@@ -41,3 +41,8 @@ export interface IMatchData {
   awayTeam: number,
   awayTeamGoals: number,
 }
+
+export interface IGoals {
+  homeTeamGoals: number,
+  awayTeamGoals: number,
+}

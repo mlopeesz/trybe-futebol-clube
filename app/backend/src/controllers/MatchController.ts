@@ -8,6 +8,7 @@ export default class MatchController {
     this.getAll = this.getAll.bind(this);
     this.create = this.create.bind(this);
     this.finishMatch = this.finishMatch.bind(this);
+    this.updateMatch = this.updateMatch.bind(this);
   }
 
   async getAll(_req: Request, res: Response, next: NextFunction) {
@@ -32,6 +33,16 @@ export default class MatchController {
     try {
       await this.service.finishMatch(req.params.id);
       return res.status(200).json({ message: 'Finished' });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async updateMatch(req: Request, res: Response, next: NextFunction) {
+    const { id } = req.params;
+    try {
+      await this.service.updateMatch(id as unknown as number, req.body);
+      return res.status(200).json({ message: 'Match updated' });
     } catch (error) {
       next(error);
     }
