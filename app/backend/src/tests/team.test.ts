@@ -33,3 +33,24 @@ describe('Rota /teams', () => {
     });
   });
 });
+
+describe('Rota /teams/:id', () => {
+  before(async () => {
+    sinon
+      .stub(team, 'findByPk')
+      .resolves([{ id: 1, teamName: 'Patético MG' }] as any);
+
+    after(() => {
+      (team.findByPk as sinon.SinonStub).restore();
+    });
+
+    it('A rota /teams/:id retorna status 200 e time com id', async () => {
+      chaiHttpResponse = await chai
+        .request(app)
+        .get('/teams/1')
+
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.body).to.be.equal([{ id: 1, teamName: 'Patético MG' }])
+    })
+  });
+})
