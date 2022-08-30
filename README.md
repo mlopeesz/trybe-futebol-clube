@@ -21,3 +21,6 @@ O seu back-end implementa regras de negócio para popular adequadamente a tabela
 ---
 ## Instalação
 Para testar a aplicação basta clonar o repositório e instalar as dependências com o ```npm install``` e executar o script ```npm run compose:up``` para subir os containers no docker. Não esqueça de configurar suas variáveis de ambiente no arquivo ```.env```.
+
+---
+*Front-End desenvolvido pela Trybe.*
